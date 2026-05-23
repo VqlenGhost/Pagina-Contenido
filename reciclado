@@ -1,0 +1,366 @@
+// ==================== CONFIGURACIÓN ====================
+const catalogo = document.getElementById('catalogo');
+
+// ==================== FUNCIÓN PARA MOSTRAR PRODUCTOS ====================
+function mostrarProductos(categoria) {
+  catalogo.innerHTML = ''; // Limpiar catálogo
+
+  const productosFiltrados = productos.filter(producto => {
+    if (categoria === 'general') return true;
+    if (categoria === 'mas-vendidos') return producto.masVendido === true;
+    return producto.categoria === categoria;
+  });
+
+  if (productosFiltrados.length === 0) {
+    catalogo.innerHTML = `<p style="color:white; text-align:center; grid-column:1/-1; padding:50px;">No hay productos en esta categoría aún.</p>`;
+    return;
+  }
+
+  productosFiltrados.forEach(producto => {
+    const card = document.createElement('div');
+    card.className = 'producto';
+    card.innerHTML = `
+      <img src="${producto.imagen}" alt="${producto.nombre}">
+      <h2>${producto.nombre}</h2>
+      <p class="precio">$${parseInt(producto.precio).toLocaleString()}</p>
+      <p>${producto.descripcion}</p>
+      
+      <div class="botones">
+        ${producto.previewUrl ? 
+          `<button class="btn-vista" onclick="mostrarVistaPrevia('${producto.previewUrl}')">👁️ Vista Previa</button>` : 
+          `<button class="btn-vista" style="opacity:0.5; cursor:default;">Vista Previa</button>`
+        }
+        <button class="btn-telegram" onclick="pedirPorTelegram('${producto.nombre}', ${producto.precio}, '${producto.imagen}')">
+          📨 Pedir por Telegram
+        </button>
+      </div>
+    `;
+    catalogo.appendChild(card);
+  });
+}
+
+// ==================== FUNCIONES DE PESTAÑAS ====================
+function openTab(evt, categoria) {
+  // Quitar clase active de todos los botones
+  document.querySelectorAll('.tab-button').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  
+  // Activar el botón clickeado
+  evt.currentTarget.classList.add('active');
+
+  // Mostrar productos de esa categoría
+  mostrarProductos(categoria);
+}
+
+// ==================== MODAL VISTA PREVIA ====================
+const modal = document.getElementById('modal');
+const modalIframe = document.getElementById('modal-iframe');
+
+function mostrarVistaPrevia(url) {
+  if (url) {
+    modalIframe.src = url;
+    modal.style.display = 'flex';
+  }
+}
+
+// Cerrar modal
+document.querySelector('.close').onclick = function() {
+  modal.style.display = 'none';
+  setTimeout(() => modalIframe.src = '', 500);
+};
+
+window.onclick = function(event) {
+  if (event.target === modal) {
+    modal.style.display = 'none';
+    setTimeout(() => modalIframe.src = '', 500);
+  }
+};
+
+// ==================== PEDIR POR TELEGRAM ====================
+function pedirPorTelegram(nombre, precio, imagen) {
+  const mensaje = `Hola! Quiero este producto:%0A%0A` +
+                  `🛍️ *${encodeURIComponent(nombre)}*%0A` +
+                  `💰 Precio: $${precio}%0A` +
+                  `🖼️ Imagen: ${encodeURIComponent(imagen)}`;
+
+  const url = `https://t.me/ghostvqle?text=${mensaje}`;   // ← CAMBIA ESTO
+  window.open(url, '_blank');
+}
+
+// ==================== INICIO ====================
+document.addEventListener('DOMContentLoaded', () => {
+  mostrarProductos('general'); // Muestra General al cargar
+});
+lengthl
+
+lengthl
+lengthl
+lengthl
+lengthl
+lengthl
+lengthl
+lengthl
+lengthl
+lengthl
+lengthl
+lengthl
+lengthl
+lengthl
+lengthl
+lengthl
+lengthl
+l
+lengthl
+l
+
+lengthll
+l
+
+lengthll
+lengthl
+
+
+
+
+
+
+
+
+const productos = [
+  // PACKSsssssssssssssssssssssssssssss
+  {
+    id: 1,
+    categoria: "packs",
+    nombre: "SET 1",
+    precio: "7 USD",
+    descripcion: "Solo tetas",
+    imagen: "imagenes/packs/set 1.png",
+    previewUrl: "https://tecito.app/ghostvqle/post/a38de7a7e0e44c46be66393de7bf993f",
+    
+  },
+
+  
+  {
+    id: 2,
+    categoria: "packs",
+    nombre: "SET 3",
+    precio: "6 USD",
+    descripcion: "Tetas + video",
+    imagen: "imagenes/packs/set 3.png",
+    previewUrl: "https://tecito.app/ghostvqle/post/9cdf32728f5f4e2a99d90b7542f18c60"
+  },
+
+  
+  {
+    id: 3,
+    categoria: "packs",
+    nombre: "SET 4",
+    precio: "8 USD",
+    descripcion: "pack rico",
+    imagen: "imagenes/packs/set 4.png",
+    previewUrl: "https://tecito.app/ghostvqle/post/cbb4cd9745fd445c98efcbb4f7bc2747"
+  },
+
+ 
+  {
+    id: 4,
+    categoria: "packs",
+    nombre: "SET 5",
+    precio: "17 USD",
+    descripcion: "En la ducha ",
+    imagen: "imagenes/packs/set 5.png",
+    previewUrl: "https://tecito.app/ghostvqle/post/14e2075c17954b5bbe1d75f79e3a8a7f",
+    masVendido: true,
+  },
+
+ 
+  {
+    id: 5,
+    categoria: "packs",
+    nombre: "Me nalgean el culo bien rico",
+    precio: "20 USD",
+    descripcion: " ",
+    imagen: "imagenes/packs/Mi novio me nalgea el culo bien rico.png",
+    previewUrl: "https://tecito.app/ghostvqle/post/5db5abac98f6474a8ca11a2412fd63d1"
+  },
+
+ 
+  {
+    id: 6,
+    categoria: "packs",
+    nombre: "SET 6",
+    precio: "27 USD",
+    descripcion: "Un set muy rico en la ducha",
+    imagen: "imagenes/packs/Set 6.png",
+    previewUrl: "https://tecito.app/ghostvqle/post/d4f7b01a29674857a01f162692a8fc28",
+    masVendido: true
+  },
+
+ 
+  {
+    id: 7,
+    categoria: "packs",
+    nombre: "SET 6 v2",
+    precio: "25 USD",
+    descripcion: "Version mas recente en la ducha",
+    imagen: "imagenes/packs/Set 6 v2.png",
+    previewUrl: "https://tecito.app/ghostvqle/post/9428e92d83e14d6f8bdc5d5f8499d2d5",
+    masVendido: true
+  },
+
+ 
+  {
+    id: 8,
+    categoria: "packs",
+    nombre: "Sesión desnuda romantica ",
+    precio: "14 USD",
+    descripcion: "Sesion con luces rosa para mas una atmosfera romantica y caliente",
+    imagen: "imagenes/packs/Sesión de fotos desnuda (19 fotos 1 video).png",
+    previewUrl: "https://tecito.app/ghostvqle/post/6f53a1455d5a4e49a7c7856dd4b3024b"
+  },
+
+ 
+  {
+    id: 9,
+    categoria: "packs",
+    nombre: "Cosplay Miad / Sirvienta",
+    precio: "18 USD",
+    descripcion: "Pequeño intento de cosplay muy caliente",
+    imagen: "imagenes/packs/Cosplay Maid (22 fotos calientes + videos).png",
+    previewUrl: "https://tecito.app/ghostvqle/post/3f987fc61e57467e89d6a4c2b22cb7a0"
+  },
+
+  // Agrega todos los productos de tu menú aquí...
+  // Agrega todos los productos de tu menú aquí...
+  // Agrega todos los productos de tu menú aquí...
+  // Agrega todos los productos de tu menú aquí...
+  // Agrega todos los productos de tu menú aquí...
+  
+{
+    id: 10,
+    categoria: "fotos",
+    nombre: "SET 1 v2 (simple)",
+    precio: "5 USD",
+    descripcion: "Solo fotos de mis tetas",
+    imagen: "imagenes/FOTOS/Set 1 v2 (simple).png",
+    previewUrl: "https://tecito.app/ghostvqle/post/79e12fcf0695472789c985f482de9309",
+    
+  },
+  {
+    id: 11,
+    categoria: "fotos",
+    nombre: "SET 2",
+    precio: "6.50 USD",
+    descripcion: "Fotos de todo mi cuerpo",
+    imagen: "imagenes/FOTOS/Set 2 (solo fotos mix).png",
+    previewUrl: "https://tecito.app/ghostvqle/post/01fd2981ec8d4641a8d4c03121380297",
+    
+  },
+  {
+    id: 12,
+    categoria: "fotos",
+    nombre: "Foto Culo",
+    precio: "4 USD",
+    descripcion: "Fotitos de mi culo barato nwn",
+    imagen: "imagenes/FOTOS/Foto culo.png",
+    previewUrl: "https://tecito.app/ghostvqle/post/8ab2d9785b164722b9d4b41b8b1e4b0a",
+    
+  },
+  {
+    id: 13,
+    categoria: "fotos",
+    nombre: "SET NEON",
+    precio: "5",
+    descripcion: "Fotos desnuda con pintura NEON en la ducha",
+    imagen: "imagenes/FOTOS/NEON.png",
+    previewUrl: "https://tecito.app/ghostvqle/post/675a71bce4944e65bb7663983ad0b623",
+    
+  },
+  {
+    id: 14,
+    categoria: "fotos",
+    nombre: "SESION DE FOTOS DESNUDA #1",
+    precio: "11",
+    descripcion: "(Culo, Tetas, Concha)",
+    imagen: "imagenes/FOTOS/sesion1.png",
+    previewUrl: "https://tecito.app/ghostvqle/post/436f99b1ff874850bfdddac4717b6ad4",
+    masVendido: true
+    
+  },
+  {
+    id: 15,
+    categoria: "fotos",
+    nombre: "SESION DE FOTOS DESNUDA #2",
+    precio: "11",
+    descripcion: "Cuerpo completo amor",
+    imagen: "imagenes/FOTOS/sesion2.png",
+    previewUrl: "https://tecito.app/ghostvqle/post/6a032e198a8348b4b84db10cffab5b33",
+    
+  },
+  {
+    id: 16,
+    categoria: "fotos",
+    nombre: "Fotos en la ducha",
+    precio: "13 USD",
+    descripcion: "Pack de fotos mas recientes !",
+    imagen: "imagenes/FOTOS/Fotos en la ducha (nuevo).png",
+    previewUrl: "https://tecito.app/ghostvqle/post/98f0ecf7c04a41949579ef2ea4992689",
+    masVendido: true
+    
+  },
+  {
+    id: 17,
+    categoria: "fotos",
+    nombre: "Set de fotos en lenceria ",
+    precio: "5.50 USD",
+    descripcion: "la lenceria costo caro :C (solo tetas)",
+    imagen: "imagenes/FOTOS/set de fotos calientes en lenceria (Solo tetas).png",
+    previewUrl: "https://tecito.app/ghostvqle/post/c82cb7236f994291bae476de574ca294",
+    
+  },
+  {
+    id: 18,
+    categoria: "fotos",
+    nombre: "Al aire libre",
+    precio: "6.50 USD",
+    descripcion: "FOTOS AL AIRE LIBRE DESNUDA",
+    imagen: "imagenes/FOTOS/FOTOS AL AIRE LIBRE DESNUDA.png",
+    previewUrl: "https://tecito.app/ghostvqle/post/db38eb2459c549968ddea6b008b64ca4",
+    
+  },
+  {
+    id: 19,
+    categoria: "fotos",
+    nombre: "Fotos en falda mostrando la concha",
+    precio: "9",
+    descripcion: "mostrando la concha en 4!",
+    imagen: "imagenes/FOTOS/Fotos en falda mostrando la concha en 4 !.png",
+    previewUrl: "https://tecito.app/ghostvqle/post/837a6145ec1649cd97fe8c315d269f1a",
+    
+  },
+  {
+    id: 20,
+    categoria: "fotos",
+    nombre: "Fotos desnuda 18 años #1",
+    precio: "6,50",
+    descripcion: "fotitos de cuando tenia 18 años...",
+    imagen: "imagenes/FOTOS/Fotos desnuda 18 años !.png",
+    previewUrl: "https://tecito.app/ghostvqle/post/5bd803a231874898af8bacfbf6d9c8dd",
+    
+  },
+  {
+    id: 21,
+    categoria: "fotos",
+    nombre: "MIS PRIMERAS NUDES ! (18 años)",
+    precio: "7",
+    descripcion: "18 años recien cumplidos",
+    imagen: "imagenes/FOTOS/MIS PRIMERAS NUDES !!!! (18 años).png",
+    previewUrl: "https://tecito.app/ghostvqle/post/2657f3d362ea446bbd7d639f664b0f32",
+    
+  },
+  
+
+
+
+];

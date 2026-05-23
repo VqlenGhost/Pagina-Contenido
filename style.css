@@ -1,0 +1,330 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', 'Georgia', serif; /* Fuente más elegante */
+    background: #1a0000;   /* Mismo color oscuro elegante */
+    color: #f8d7d7;
+    line-height: 1.7;
+    min-height: 100vh;
+}
+
+/* Fondo sutil elegante */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 20, 147, 0.06), transparent 80%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ==================== HEADER ==================== */
+header {
+    background: #1a0000;   /* Mismo color que el body */
+    color: white;
+    text-align: center;
+    padding: 4.5rem 1rem 3rem;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent, rgba(139, 0, 0, 0.4));
+}
+
+.header-overlay h1 {
+    font-size: 4.2rem;
+    font-weight: 700;
+    letter-spacing: 8px;
+    text-shadow: 0 0 25px #ff1493,
+                 0 0 50px #ff0000;
+    animation: neonBlink 2s infinite alternate ease-in-out;
+}
+
+@keyframes neonBlink {
+    from { text-shadow: 0 0 15px #ff1493, 0 0 30px #ff0000; }
+    to   { text-shadow: 0 0 30px #ff1493, 0 0 70px #ff0000, 0 0 100px #ff1493; }
+}
+
+.subtitle {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #ffcccc;
+    margin-top: 0.8rem;
+    letter-spacing: 2px;
+}
+
+.warning {
+    font-size: 1rem;
+    color: #ff6666;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+/* ==================== TABS ==================== */
+.tabs {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 20, 147, 0.3);
+}
+
+.tab-button {
+    padding: 14px 32px;
+    background: rgba(40, 5, 15, 0.9);
+    color: #ffcccc;
+    border: 1px solid rgba(255, 20, 147, 0.3);
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.95rem;
+}
+
+.tab-button:hover {
+    background: rgba(255, 20, 147, 0.2);
+    transform: translateY(-3px);
+}
+
+.tab-button.active {
+    background: #ff1493;
+    color: white;
+    border-color: #ff1493;
+    box-shadow: 0 0 25px rgba(255, 20, 147, 0.6);
+}
+
+/* ==================== TARJETAS PREMIUM ==================== */
+#catalogo {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2.2rem;
+}
+
+.producto {
+    background: rgba(25, 5, 15, 0.95);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 20, 147, 0.25);
+    display: flex;
+    flex-direction: column;
+}
+
+.producto:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 60px rgba(255, 20, 147, 0.4);
+    border-color: #ff1493;
+}
+
+.producto img {
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+    transition: all 0.6s ease;
+}
+
+.producto:hover img {
+    transform: scale(1.07);
+    filter: brightness(1.08) contrast(1.1);
+}
+
+.producto h2 {
+    padding: 1.3rem 1.3rem 0.6rem;
+    font-size: 1.45rem;
+    color: #ffb3d1;
+    min-height: 58px;
+}
+
+.precio {
+    padding: 0 1.3rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff1493;
+    text-shadow: 0 0 15px rgba(255, 20, 147, 0.5);
+}
+
+.producto p {
+    padding: 0 1.3rem 1.2rem;
+    color: #e8b8c8;
+    flex-grow: 1;
+}
+
+.botones {
+    padding: 1.2rem 1.3rem 1.5rem;
+    display: flex;
+    gap: 14px;
+    margin-top: auto;
+}
+
+.btn-vista, .btn-telegram {
+    flex: 1;
+    padding: 16px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.02rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-vista {
+    background: rgba(100, 0, 80, 0.9);
+    color: white;
+}
+
+.btn-vista:hover {
+    background: #c71585;
+    transform: scale(1.05);
+}
+
+.btn-telegram {
+    background: linear-gradient(90deg, #ff1493, #db2777);
+    color: white;
+}
+
+.btn-telegram:hover {
+    background: linear-gradient(90deg, #ff69b4, #ff1493);
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #ff1493;
+}
+
+/* ==================== MODAL ==================== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(10, 0, 10, 0.97);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: #1a0000;
+  width: 95%;
+  max-width: 1050px;
+  height: 90vh;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 3px solid #ff1493;
+  box-shadow: 0 0 80px rgba(255, 20, 147, 0.6);
+}
+
+.modal-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.close {
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  font-size: 42px;
+  cursor: pointer;
+  color: #ff69b4;
+  z-index: 10;
+  background: rgba(0,0,0,0.7);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+}
+
+.close:hover {
+  color: #ff0000;
+  transform: rotate(90deg);
+}
+
+
+/* ==================== CARRUSEL HERO MEJORADO ==================== */
+.hero {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    border-bottom: 4px solid #ff1493;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.8s ease-in-out;
+    filter: brightness(0.75) contrast(1.1); /* Hace que se vea mejor la imagen */
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+/* Overlay más suave */
+.hero-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.hero-overlay h2 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 0 30px rgba(255, 20, 147, 0.9),
+                 0 0 60px rgba(255, 0, 0, 0.6);
+    margin-bottom: 1rem;
+    letter-spacing: 3px;
+}
+
+.hero-overlay p {
+    font-size: 1.4rem;
+    color: #ffcccc;
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    font-weight: 500;
+}
+
+/* Línea decorativa abajo */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, transparent, #ff1493, transparent);
+}
