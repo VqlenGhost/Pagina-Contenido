@@ -1,7 +1,7 @@
 const catalogo = document.getElementById('catalogo');
 
 // ==================== PEDIR POR TELEGRAM (CORREGIDO) ====================
-function pedirPorTelegram(nombre, precio, imagen) {
+function pedirPorTelegram(nombre, precio) {
     const mensaje = `Hola! Quiero este producto:%0A%0A` +
                     `🛍️ *${encodeURIComponent(nombre)}*%0A` +
                     `💰 Precio: $${precio}%0A`
