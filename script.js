@@ -4,8 +4,8 @@ const catalogo = document.getElementById('catalogo');
 function pedirPorTelegram(nombre, precio, imagen) {
     const mensaje = `Hola! Quiero este producto:%0A%0A` +
                     `🛍️ *${encodeURIComponent(nombre)}*%0A` +
-                    `💰 Precio: $${precio}%0A` +
-                    `🖼️ Imagen: ${encodeURIComponent(imagen || 'No disponible')}`;
+                    `💰 Precio: $${precio}%0A`
+                    ;
 
     const url = `https://t.me/ghostvqle?text=${mensaje}`;
     window.open(url, '_blank');
